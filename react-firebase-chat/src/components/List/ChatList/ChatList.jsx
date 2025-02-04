@@ -24,6 +24,34 @@ const ChatList = () => {
             <p>Hello</p>
           </div>
         </div>
+        <div className="Item">
+          <img src="./avatar.png" alt="" />
+          <div className="Text">
+            <span>Jane Doe</span>
+            <p>Hello</p>
+          </div>
+        </div>
+        <div className="Item">
+          <img src="./avatar.png" alt="" />
+          <div className="Text">
+            <span>Jane Doe</span>
+            <p>Hello</p>
+          </div>
+        </div>
+        <div className="Item">
+          <img src="./avatar.png" alt="" />
+          <div className="Text">
+            <span>Jane Doe</span>
+            <p>Hello</p>
+          </div>
+        </div>
+        <div className="Item">
+          <img src="./avatar.png" alt="" />
+          <div className="Text">
+            <span>Jane Doe</span>
+            <p>Hello</p>
+          </div>
+        </div>
       </div>
     )
   }
