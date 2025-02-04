@@ -1,8 +1,8 @@
 import { useState } from "react";
-import "./search.css"
+import "./search.css";
 
 const Search = () => {
-    const [addMode, setAddMode] = useState(false)
+    const [addMode, setAddMode] = useState(false);
     return (
         <div className="Search">
             <div className="SearchBar">
@@ -16,7 +16,7 @@ const Search = () => {
                 onClick={() => setAddMode((prev) => !prev)}
             />
         </div>
-    )
-}
+    );
+};
 
-export default Search
+export default Search;
