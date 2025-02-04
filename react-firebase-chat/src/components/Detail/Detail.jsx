@@ -1,9 +1,9 @@
-import "./detail.css"
+import "./detail.css";
 
 const Detail = () => {
-    return (
-      <div className="Detail">Detail</div>
-    )
-  }
-  
-  export default Detail
+  return (
+    <div className="Detail">Detail</div>
+  );
+};
+
+export default Detail;
