@@ -26,7 +26,48 @@ const Chat = () => {
           <img src="./info.png" alt="" />
         </div>
       </div>
-      <div className="Center"></div>
+      <div className="Center">
+        <div className="Message">
+          <img src="./avatar.png" alt="" />
+          <div className="Text">
+            <p>this is a message yobani svet, tri paloski papiset vartou :)</p>
+            <span>1 min ago</span>
+          </div>
+        </div>
+        <div className="Message Own">
+          <div className="Text">
+            <p>this is a message yobani svet, tri paloski papiset vartou :)</p>
+            <span>1 min ago</span>
+          </div>
+        </div>
+        <div className="Message">
+          <img src="./avatar.png" alt="" />
+          <div className="Text">
+            <p>this is a message yobani svet, tri paloski papiset vartou :)</p>
+            <span>1 min ago</span>
+          </div>
+        </div>
+        <div className="Message Own">
+          <div className="Text">
+            <p>this is a message yobani svet, tri paloski papiset vartou :)</p>
+            <span>1 min ago</span>
+          </div>
+        </div>
+        <div className="Message">
+          <img src="./avatar.png" alt="" />
+          <div className="Text">
+            <p>this is a message yobani svet, tri paloski papiset vartou :)</p>
+            <span>1 min ago</span>
+          </div>
+        </div>
+        <div className="Message Own">
+          <div className="Text">
+            <img src="https://marketplace.canva.com/EAFbdJ-uI_A/3/0/1600w/canva-grey-photographic-cat-funny-meme-eKWKfRGEwc4.jpg" alt="" />
+            <p>this is a message yobani svet, tri paloski papiset vartou :)</p>
+            <span>1 min ago</span>
+          </div>
+        </div>
+      </div>
       <div className="Bottom">
         <div className="Icons">
           <img src="./img.png" alt="" />
@@ -36,18 +77,18 @@ const Chat = () => {
         <input
           type="text"
           placeholder="Type a message..."
+          value={text}
           onChange={(e) => setText(e.target.value)}
         />
-        <div className="emoji">
+        <div className="Emoji">
           <img
             src="./emoji.png"
             alt=""
             onClick={() => setOpen((prev) => !prev)}
           />
-          <EmojiPicker
-            open={open}
-            onEmojiClick={handleEmoji}
-          />
+          <div className="Picker">
+            <EmojiPicker open={open} onEmojiClick={handleEmoji} />
+          </div>
         </div>
         <button className="SendButton">Send</button>
       </div>
