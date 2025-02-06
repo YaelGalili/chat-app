@@ -1,7 +1,7 @@
 .ChatList {
     flex: 1;
     overflow-y: scroll;
-    
+
     .Item {
         display: flex;
         align-items: center;
