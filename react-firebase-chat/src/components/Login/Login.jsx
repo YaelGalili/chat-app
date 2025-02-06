@@ -19,7 +19,14 @@ const Login = () => {
 
     const handleLogin = e => {
         e.preventDefault();
-        toast.warn("Hello");
+    };
+
+    const handleRegister = e => {
+        e.preventDefault();
+        const formData = new FormData(e);
+        const { username, email, password } = Object.fromEntries(formData);
+
+        console.log(username);
     };
 
     return (
@@ -35,7 +42,7 @@ const Login = () => {
             <div className="Separator"></div>
             <div className="Item">
                 <h2>Create an Account</h2>
-                <form>
+                <form onSubmit={handleRegister}>
                     <label htmlFor="file">
                         <img src={avatar.url || "./avatar.png"} alt="" />
                         Upload an image

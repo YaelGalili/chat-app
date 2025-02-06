@@ -4,7 +4,7 @@ const AddUser = () => {
     return (
         <div className="AddUser">
             <form>
-                <input type="text" placeholder="Username" name="username"/>
+                <input type="text" placeholder="Username" name="username" />
                 <button>Search</button>
             </form>
             <div className="User">

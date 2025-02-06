@@ -16,7 +16,7 @@ const Search = () => {
                 className="Add"
                 onClick={() => setAddMode((prev) => !prev)}
             />
-            {addMode && <AddUser/>}
+            {addMode && <AddUser />}
         </div>
     );
 };
