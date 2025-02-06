@@ -1,4 +1,5 @@
 import { useState } from "react";
+import AddUser from "./AddUser/AddUser";
 import "./search.css";
 
 const Search = () => {
@@ -15,6 +16,7 @@ const Search = () => {
                 className="Add"
                 onClick={() => setAddMode((prev) => !prev)}
             />
+            {addMode && <AddUser/>}
         </div>
     );
 };

@@ -1,4 +1,3 @@
-import AddUser from "./AddUser/AddUser";
 import "./chat-list.css";
 
 const ChatList = () => {
@@ -53,7 +52,6 @@ const ChatList = () => {
           <p>Hello</p>
         </div>
       </div>
-      <AddUser/>
     </div>
   );
 };
