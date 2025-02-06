@@ -5,7 +5,7 @@ import Login from "./components/Login/Login";
 import Notification from "./components/Notification/Notification";
 
 const App = () => {
-  const user = false;
+  const user = true;
 
   return (
     <div className="Container">
