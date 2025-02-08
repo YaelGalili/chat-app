@@ -5,12 +5,11 @@ import { useEffect, useState } from "react";
 import { doc, getDoc, onSnapshot, updateDoc } from "firebase/firestore";
 import { db } from "../../../lib/firebase";
 
-const ChatList = () => {
+const ChatList = ({ searchInput }) => {
   const [chats, setChats] = useState([]);
 
   const { currentUser } = useUserStore();
   const { chatId, changeChat } = useChatStore();
-
 
   useEffect(() => {
     const unSub = onSnapshot(
@@ -58,9 +57,13 @@ const ChatList = () => {
     }
   };
 
+  const filteredChats = chats.filter((c) =>
+    c.user.username.toLowerCase().includes(searchInput.toLowerCase())
+  );
+
   return (
     <div className="ChatList">
-      {chats.map((chat) => (
+      {filteredChats.map((chat) => (
         <div
           className="Item"
           key={chat.chatId}
