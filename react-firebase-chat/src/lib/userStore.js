@@ -3,7 +3,7 @@ import { db } from "./firebase";
 import { create } from "zustand";
 
 export const useUserStore = create((set) => ({
-    currentStore: null,
+    currentUser: null,
     isLoading: true,
     fetchUserInfo: async (uid) => {
         if (!uid) {
