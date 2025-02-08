@@ -1,12 +1,38 @@
-import { auth } from "../../lib/firebase";
+import { arrayRemove, arrayUnion, doc, updateDoc } from "firebase/firestore";
+import { useChatStore } from "../../lib/chatStore";
+import { auth, db } from "../../lib/firebase";
+import { useUserStore } from "../../lib/userStore";
 import "./detail.css";
 
 const Detail = () => {
+  const { chatId, user, isCurrentUserBlocked, isReceiverBlocked, changeBlock, resetChat } = useChatStore();
+  const { currentUser } = useUserStore();
+
+  const handleBlock = async () => {
+    if (!user) return;
+
+    const userDocRef = doc(db, "users", currentUser.id);
+
+    try {
+      await updateDoc(userDocRef, {
+        blocked: isReceiverBlocked ? arrayRemove(user.id) : arrayUnion(user.id),
+      });
+      changeBlock();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleLogout = () => {
+    auth.signOut();
+    resetChat();
+  };
+
   return (
     <div className="Detail">
       <div className="User">
-        <img src="./avatar.png" alt="" />
-        <h2>Jane Doe</h2>
+        <img src={user?.avatar || "./avatar.png"} alt="" />
+        <h2>{user?.username}</h2>
         <p>Hey im at schooll sup bruv?</p>
       </div>
       <div className="Info">
@@ -30,7 +56,6 @@ const Detail = () => {
           <div className="Photos">
             <div className="PhotoItem">
               <div className="PhotoDetail">
-
                 <img
                   src="https://i.chzbgr.com/full/9735745536/hC530FFB6/person-watching-movement-pizza-guys-every-on-delivery-app"
                   alt=""
@@ -41,7 +66,6 @@ const Detail = () => {
             </div>
             <div className="PhotoItem">
               <div className="PhotoDetail">
-
                 <img
                   src="https://i.chzbgr.com/full/9735745536/hC530FFB6/person-watching-movement-pizza-guys-every-on-delivery-app"
                   alt=""
@@ -52,7 +76,6 @@ const Detail = () => {
             </div>
             <div className="PhotoItem">
               <div className="PhotoDetail">
-
                 <img
                   src="https://i.chzbgr.com/full/9735745536/hC530FFB6/person-watching-movement-pizza-guys-every-on-delivery-app"
                   alt=""
@@ -63,7 +86,6 @@ const Detail = () => {
             </div>
             <div className="PhotoItem">
               <div className="PhotoDetail">
-
                 <img
                   src="https://i.chzbgr.com/full/9735745536/hC530FFB6/person-watching-movement-pizza-guys-every-on-delivery-app"
                   alt=""
@@ -82,8 +104,16 @@ const Detail = () => {
         </div>
       </div>
       <div className="Actions">
-        <button>Block User</button>
-        <button className="Logout" onClick={() => auth.signOut()}>Logout</button>
+        <button onClick={handleBlock}>
+          {isCurrentUserBlocked
+            ? "You are Blocked!"
+            : isReceiverBlocked
+              ? "User blocked"
+              : "Block User"}
+        </button>
+        <button className="Logout" onClick={handleLogout}>
+          Logout
+        </button>
       </div>
     </div>
   );
