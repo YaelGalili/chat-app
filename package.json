@@ -30,5 +30,5 @@
     "gh-pages": "^6.3.0",
     "vite": "^5.2.0"
   },
-  "homepage": "https://YaelGalili.github.io/chat-app/react-firebase-chat"
+  "homepage": "https://YaelGalili.github.io/chat-app"
 }
