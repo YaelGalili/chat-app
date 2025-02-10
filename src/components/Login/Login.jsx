@@ -3,7 +3,7 @@ import "./login.css";
 import { toast } from "react-toastify";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { auth, db } from "../../lib/firebase";
-import { doc, setDoc } from "firebase/firestore";
+import { collection, doc, getDocs, query, setDoc, where } from "firebase/firestore";
 import upload from "../../lib/upload";
 
 const Login = () => {
@@ -31,6 +31,15 @@ const Login = () => {
         const { username, email, password } = Object.fromEntries(formData);
 
         try {
+            const usersRef = collection(db, "users");
+            const q = query(usersRef, where("username", "==", username));
+            const querySnapshot = await getDocs(q);
+
+            if (!querySnapshot.empty) {
+                toast.error("Username is already taken. Please choose another one.");
+                return;
+            }
+
             const res = await createUserWithEmailAndPassword(auth, email, password);
             const imgUrl = await upload(avatar.file);
 
